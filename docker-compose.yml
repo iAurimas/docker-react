@@ -1,0 +1,24 @@
+#Specify docker-compose version
+version: '3'
+#Creating containers
+services:
+  react-app:
+    stdin_open: true  # do not know what it does????????/
+    build:
+      context: . #Use current directory to find dockerfile and build container from it
+      dockerfile: dockerfile
+    ports:
+      - "3000:3000"  # - is used to specify an Array in YML
+    restart: always # Always restart container in case of app crash  restart: on-failure ;  restart: unless-stopped;  restart: "no"
+    volumes:
+      - /app/node_modules  # telling not to map node_modules
+      - .:/app  # telling to map /app directory on a Container to local working directory
+      #When container is build using docker-compose both containers will be on the same network
+  tests:  #creates a container just for running tests
+    build:
+      context: . #Use current directory to find dockerfile and build container from it
+      dockerfile: dockerfile.dev
+    volumes:
+      - /app/node_modules  # telling not to map node_modules
+      - .:/app  # telling to map /app directory on a Container to local working directory
+    command: ["npm", "run", "test"]
