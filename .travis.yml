@@ -1,4 +1,4 @@
-language: node_js
+language: generic
 #Super user level permision to execute build
 sudo: required
 #we need a copy of docker ready to run
