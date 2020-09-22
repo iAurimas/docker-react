@@ -1,0 +1,14 @@
+language: generic
+#Super user level permision to execute build
+sudo: required
+#we need a copy of docker ready to run
+services:
+  -docker
+
+
+before_install:
+  -docker build -t iaurimas/docker-react -f dockerfile.dev .
+
+
+  script:
+  -docker run -e CI=true iaurimas/docker-react npm run test -- --coverage
