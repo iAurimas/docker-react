@@ -25,6 +25,9 @@ RUN npm run build
 
 FROM nginx
 
+#Expose port 80 once deployed to elasticbeanstalk, this will not work localy!!!!!!!
+EXPOSE 80
+
 # copy build folder from build process executed above
 COPY --from=builder /app/build /usr/share/nginx/html
 
