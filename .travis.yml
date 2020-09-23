@@ -27,5 +27,4 @@ deploy:
   bucket_name: "elasticbeanstalk-eu-north-1-860177140429"
   bucket_path: "docker-react"
 #Deploy code only when pushed to master
-    on:
-      branch: master
+  
