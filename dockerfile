@@ -4,7 +4,7 @@ FROM node:alpine
 
 #Creates a folder to which app content will be copied
 
-WORKDIR "/app"
+ WORKDIR '/app'
 
 # Copy package.json required for npm install
 
