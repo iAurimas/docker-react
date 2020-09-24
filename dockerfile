@@ -7,6 +7,7 @@ FROM node:alpine
 WORKDIR "/app"
 
 # Copy package.json required for npm install
+
 COPY package*.json ./
 
 # Download an install dependencies:
@@ -15,7 +16,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copy entire content
-COPY ./ ./
+COPY . .
 
 # Tell image what to do when it starts a Container  > Builds build directory and store it in /app/build
 
@@ -29,6 +30,7 @@ FROM nginx
 EXPOSE 80
 
 # copy build folder from build process executed above
+
 COPY --from=0 /app/build /usr/share/nginx/html
 
 #nginx container default start comand will start nginx automaticaly
